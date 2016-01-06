@@ -40,8 +40,38 @@ sublist(SubList,L):-
   prefix(SubList, S).
 ```
 
+Define second/2
 
+* second(X,L) where X is the second element of list L
+```
+second(X, [_,X|_]).
+```
 
+Find the length of a list recursively
+* len(L,N) where N is length of the list 
+```
+len([],0).
+len([_|T], N):-
+  N is Nnew + 1,
+  len(T, N).
+```
+
+Find the length of a list with an accumulator
+```
+len(L,N):- len(L,0,N).
+
+len([],A,A).
+len([_|T], Acc, N):-
+  AccNew is Acc + 1,
+  len(T,AccNew, N).
+```
+
+Double every element of a list
+*twice(L1,L2) where [a,4] --> [a,a,4,4]
+```
+twice ([],[]).
+twice([Ha|Ta],[Ha,Ha|Tb]):- twice(Ta,Tb).
+```
 
 
 
