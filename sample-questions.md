@@ -111,6 +111,16 @@ biggerof(X,Y,X):- X >= Y.
 biggerof(X,Y,Y):- Y > X.
 ```
 
+Penultimate
+* penultimate(X,L) where X is the second last item in list L
+```
+penultimate(X,[X,_]).
+
+penultimate(X, [_,Y|Ys]):-
+  penultimate(X, [Y|Ys]).
+```
+
+
 
 ---
 Sources include:
