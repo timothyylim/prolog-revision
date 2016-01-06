@@ -15,6 +15,32 @@ member(X, [_|T]):-
   member(X,T).
 ```
 
+Define append/3
+
+```
+append(_, L, L).
+append([H|T], L2, [H|L3]):-
+  append(T, L2, L3).
+```
+
+Define prefix/2
+```
+prefix(P,L):- append(P,_,L).
+```
+
+Define suffix/2
+```
+suffix(S,L):- append(_,S,L).
+```
+
+Define sublist/2
+```
+sublist(SubList,L):-
+  suffix(S,L),
+  prefix(SubList, S).
+```
+
+
 
 
 
