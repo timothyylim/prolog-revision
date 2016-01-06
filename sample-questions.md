@@ -119,6 +119,45 @@ penultimate(X, [_,Y|Ys]):-
   penultimate(X, [Y|Ys]).
 ```
 
+Find the greatest integer in a list
+* max(X,L) 
+```
+max(X,[X]).
+
+max(X,[Y,Z|T]):-
+  Y =< Z,
+  max(X, [Z|T]).
+
+max(X, [Y,Z|T]):-
+  Y > Z,
+  max(X, [Y|T]).
+```
+
+Find the greatest integer in a list using an accumulator
+* max(X,L) 
+```
+max(X,L):- max(X,0,L).
+
+max([],A,A).
+
+max([H|T], Acc, Max):-
+  H > Acc,
+  max(T, H, Max).
+ 
+max([H|T], Acc, Max):-
+  H < Acc,
+  max(T, Acc, Max).
+```
+
+Find the total sum of all integers in a list
+* sumList(L,S)
+```
+sumList([], 0).
+
+sumList([H|T], S):-
+  S is Snew + H,
+  sumList(T,Snew). 
+```
 
 
 ---
@@ -126,7 +165,7 @@ Sources include:
 
 [99 Prolog problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
 
-[Learn Prolog Now)(http://learnprolognow.org/)
+[Learn Prolog Now](http://learnprolognow.org/)
 
 [Hogwarts coursework]
 
