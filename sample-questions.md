@@ -2,7 +2,6 @@
 
 These are sample questions collected from a variety of places and compiled into one file. You can find the sources at the bottom.
 
-The idea is that if you can do all the questions here you should be good to go for the exam. 
 
 
 ---
