@@ -47,7 +47,7 @@ Define second/2
 second(X, [_,X|_]).
 ```
 
-Find the length of a list recursively
+Find the length of a list without an accumulator 
 * len(L,N) where N is length of the list 
 ```
 len([],0).
@@ -73,8 +73,43 @@ twice ([],[]).
 twice([Ha|Ta],[Ha,Ha|Tb]):- twice(Ta,Tb).
 ```
 
+Define sort 
+* sort(L1,L2) where L2 is a sorted version of L1
+```
+mysort(L1,L2):- setof(E, member(E,L), SL).
+```
 
+Reverse a list using append
+```
+rev([],[]).
 
+rev([H|T], R):-
+  append(RTail, [H], R),
+  rev(T,RTail).
+```
+
+Reverse a list using an accumulator
+```
+rev(L,R):- revAcc(L,[],R).
+
+revAcc([],A,A).
+
+revAcc([H|T], Acc, R):-
+  revAcc(T, [H|A], R). 
+```
+
+Define followedby(X,Y,L)
+* X is followed by Y in list L
+```
+followedby(X,Y,L):- append(_,[X,Y|_], L).
+```
+
+Define biggerof(X,Y,Z)
+* Z is X is if X is bigger than Y and vice versa 
+```
+biggerof(X,Y,X):- X >= Y.
+biggerof(X,Y,Y):- Y > X.
+```
 
 
 ---
