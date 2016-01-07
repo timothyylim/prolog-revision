@@ -159,7 +159,38 @@ sumList([H|T], S):-
   sumList(T,Snew). 
 ```
 
+Define Fibonacci/2
+* fib(X,Y) where Y is the Xth fibonacci number
+```
+fib(0, 0). 
+fib(1, 1). 
 
+fib(X, Y) :-
+  X > 1,
+  X2 is X – 2, fib(X2, Y2), 
+  X1 is X – 1, fib(X1, Y1), 
+  Y is Y1 + Y2.
+```
+
+Remove the first and last elements of a list
+*toptail(L1,L2)
+```
+toptail(L1,L2):- append([_|L2], [_], L1). 
+```
+
+Split a list into two new lists
+*split(L,N,L1,L2) where the list is split at the Nth index
+```
+split(L,0,[],L).
+
+split([X|T1], N, [X|T2], L2):-
+  N > 0,
+  Nnew is N - 1,
+  split(T1, Nnew, T2, L2).
+```
+
+
+ 
 ---
 Sources include:
 
