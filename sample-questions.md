@@ -24,7 +24,7 @@ member(X, [_|T]):-
 Define append/3
 
 ```
-append(_, L, L).
+append([], L, L).
 append([H|T], L2, [H|L3]):-
   append(T, L2, L3).
 ```
@@ -58,8 +58,8 @@ Find the length of a list without an accumulator
 ```
 len([],0).
 len([_|T], N):-
-  N is Nnew + 1,
-  len(T, N).
+  len(T, N),
+  N is Nnew + 1.
 ```
 
 Find the length of a list with an accumulator
