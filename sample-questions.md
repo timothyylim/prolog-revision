@@ -6,6 +6,13 @@ These are sample questions collected from a variety of places and compiled into 
 
 ---
 
+Get last element of a list
+```
+my_last(X,[X]).
+
+my_last(X,[_|L]) :- my_last(X,L).
+```
+
 Define member/2
 
 ```
@@ -189,8 +196,84 @@ split([X|T1], N, [X|T2], L2):-
   split(T1, Nnew, T2, L2).
 ```
 
+Swap the first two elements of a list
+```
+swap12([],[]).
 
- 
+swap12([X,Y|List]), [Y,X|List]).
+```
+
+
+
+Duplicate the elements of a list agiven number of times
+* dupli(L1,N,L2) L2 is obtained from L1 by duplicating all elements
+
+```
+dupli(L1,N,L2) :- dupli(L1,N,L2,N).
+
+dupli([],_,[],_).
+
+dupli([_|T1],N,T2,0) :- 
+  dupli(T1,N,T2,N).
+  
+dupli([X|T1],N,[X|T2],K) :- 
+  K > 0,
+  K1 is K - 1, 
+  dupli([X|T1],N,T2,K1).
+```
+
+Eliminate consecutive duplicates of list elements
+
+```
+compress([],[]).
+compress([X],[X]).
+
+compress([X,X|Xs],Zs) :- 
+  compress([X|Xs],Zs).
+  
+compress([X,Y|Ys],[X|Zs]) :- 
+  X \= Y, 
+  compress([Y|Ys],Zs).
+```
+
+Find Kth Element of a list
+* index(List,Element,Index)
+
+```
+index([E|_], E , 0).
+
+index([_|T], E, I):-
+  I is Index1 + 1,
+  index(T, E, Index1).
+```
+
+Remove Kth element from a list
+* remove(Element, List1, K, List2) List2 is List1 with Element at index K removed
+```
+remove(X,[X|T],1,T).
+
+remove(X, [Y|T1], K , [Y|T2]):-
+  K > 1,
+  Knew is K - 1,
+  remove(X, T1, K1, T2).
+```
+
+Drop every Nth element from a list
+```
+drop(L1,N,L2) :- drop(L1,N,L2,N).
+
+drop([],_,[],_).
+
+drop([_|Xs],N,Ys,1) :- 
+  drop(Xs,N,Ys,N).
+  
+drop([X|Xs],N,[X|Ys],K) :- 
+  K > 1, 
+  K1 is K - 1, 
+  drop(Xs,N,Ys,K1).
+```
+
+
 ---
 Sources include:
 
