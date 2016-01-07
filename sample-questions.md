@@ -79,10 +79,11 @@ twice ([],[]).
 twice([Ha|Ta],[Ha,Ha|Tb]):- twice(Ta,Tb).
 ```
 
-Define sort (this doesn't work yet)
+Define sort 
 * sort(L1,L2) where L2 is a sorted version of L1
 ```
-mysort(L1,L2):- setof(E, member(E,L), SL).
+mysort(L,SL):-
+    setof(X,member(X,L),SL). 
 ```
 
 Reverse a list using append
