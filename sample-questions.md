@@ -73,6 +73,7 @@ len([_|T], Acc, N):-
 ```
 
 Double every element of a list
+
 *twice(L1,L2) where [a,4] --> [a,a,4,4]
 ```
 twice ([],[]).
@@ -80,6 +81,7 @@ twice([Ha|Ta],[Ha,Ha|Tb]):- twice(Ta,Tb).
 ```
 
 Define sort 
+
 * sort(L1,L2) where L2 is a sorted version of L1
 ```
 mysort(L,SL):-
@@ -119,6 +121,7 @@ biggerof(X,Y,Y):- Y > X.
 ```
 
 Penultimate
+
 * penultimate(X,L) where X is the second last item in list L
 ```
 penultimate(X,[X,_]).
@@ -128,6 +131,7 @@ penultimate(X, [_,Y|Ys]):-
 ```
 
 Find the greatest integer in a list
+
 * max(X,L) 
 ```
 max(X,[X]).
@@ -142,6 +146,7 @@ max(X, [Y,Z|T]):-
 ```
 
 Find the greatest integer in a list using an accumulator
+
 * max(X,L) 
 ```
 max(X,L):- max(X,0,L).
@@ -158,6 +163,7 @@ max([H|T], Acc, Max):-
 ```
 
 Find the total sum of all integers in a list
+
 * sumList(L,S)
 ```
 sumList([], 0).
@@ -168,6 +174,7 @@ sumList([H|T], S):-
 ```
 
 Define Fibonacci/2
+
 * fib(X,Y) where Y is the Xth fibonacci number
 ```
 fib(0, 0). 
