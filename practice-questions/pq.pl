@@ -76,6 +76,23 @@ delete([X], [X]).
 delete([H,_|T], [H|Result]) :- 
     delete(T, Result).
 
+% Process (credit to FilWisher, two ways to skin a cat!)
+
+process(L1, [(Name, Age,M)|T], [(Name, Age,M)|C], I):-
+	Match = (Name, Age),
+	member(Match, L1),
+	process(L1, T, C, I).
+
+process(L1, L2, Consistent, Inconsistent) :-
+  L2 = [H|T],
+  H = (Name, Age, _),
+  Match = (Name, Age),
+  \+member(Match, L1),
+  process(L1, T, Consistent, RestIncons),
+  Inconsistent = [H|RestIncons].
+  
+process(_, [], [], []).
+
 
 % 7. split(L, N, L1, L2)
 % Split a list L into two parts L1 and L2 
@@ -100,6 +117,30 @@ drop([X|Xs],N,[X|Ys],K) :-
     K1 is K - 1, 
     drop(Xs,N,Ys,K1).
 
+% 9. enrolment(L, Student, Degree)
 
-    
+enrolment(L, Student, Degree):-
+	Group = (Degree, Students),
+	member(Group, L),
+	member(Student, Students).
+
+% 10. student_list(L, Meng, MSc)
+
+student_list(L, Meng, MSc):-
+	L = [H|T],
+	H = (Degree, Students),
+	Degree = meng,
+	append(Students, Rest, Meng),
+	student_list(T,Rest,MSc).
+
+student_list(L, Meng, MSc):-
+	L = [H|T],
+	H = (Degree, Students),
+	Degree = msc,
+	append(Students, Rest, MSc),
+	student_list(T,Meng,Rest).
+
+student_list([],[],[]).
+
+
     
